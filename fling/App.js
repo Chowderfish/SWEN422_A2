@@ -1,19 +1,38 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { PureComponent } from "react";
+import { View, StatusBar, StyleSheet } from "react-native";
+import MainMenu from "./src/menus/main";
+import Game from "./src/game";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+export default class DonkeyKong extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      gameVisible: false
+    };
+  }
+
+  toggleGame = gameVisible => {
+    this.setState({
+      gameVisible
+    });
+  };
+
+  render() {
+    return (
+        <View style={styles.container}>
+          <StatusBar barStyle={"light-content"} hidden={this.state.gameVisible} animated showHideTransition={"slide"} />
+          <MainMenu onPlayGame={_ => this.toggleGame(true)} />
+          <Game
+              visible={this.state.gameVisible}
+              onClose={_ => this.toggleGame(false)}
+          />
+        </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    flex: 1
+  }
 });
