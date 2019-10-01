@@ -5,17 +5,21 @@ const swipe = (touches, dispatch) => {
 
     if (move) {
 
+        let move_vector = { 
+            x: (move.delta.locationX * 100 / move.delta.timestamp),
+            y: (move.delta.locationY * 100 / move.delta.timestamp) };
+
         if (move.delta.locationX < -2)
-            dispatch({ type: "swipe-left" });
+            dispatch({ type: "swipe-left", vector: move_vector });
 
         if (move.delta.locationX > 2)
-            dispatch({ type: "swipe-right" });
+            dispatch({ type: "swipe-right", vector: move_vector });
 
         if (move.delta.locationY < -2)
-            dispatch({ type: "swipe-up" });
+            dispatch({ type: "swipe-up", vector: move_vector });
 
         if (move.delta.locationY > 2)
-            dispatch({ type: "swipe-down" });
+            dispatch({ type: "swipe-down", vector: move_vector });
     }
 };
 

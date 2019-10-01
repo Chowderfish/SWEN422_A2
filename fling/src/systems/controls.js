@@ -15,10 +15,10 @@ export default (entities, { events }) => {
     let player = entities.player;
     let platforms = filter(entities, "platform");
 
-    let swipeUp = any(events, "type", "swipe-up");
-    let swipeDown = any(events, "type", "swipe-down");
-    let swipeLeft = any(events, "type", "swipe-left");
-    let swipeRight = any(events, "type", "swipe-right");
+    let swipeUp = events.find(e => e.type === "swipe-up");
+    let swipeDown = events.find(e => e.type === "swipe-down");
+    let swipeLeft = events.find(e => e.type === "swipe-left");
+    let swipeRight = events.find(e => e.type === "swipe-right");
     let tap = any(events, "type", "tap");
     let hold = any(events, "type", "hold");
 
@@ -39,6 +39,7 @@ export default (entities, { events }) => {
             then: () => {
                 player.controls.mode = "platform";
                 player.direction.horizontal = "left";
+                player.body.force = swipeLeft.vector;
                 player.controls.gestures = {};
             }
         },
@@ -47,6 +48,25 @@ export default (entities, { events }) => {
             then: () => {
                 player.controls.mode = "platform";
                 player.direction.horizontal = "right";
+                player.body.force = swipeRight.vector;
+                player.controls.gestures = {};
+            }
+        },
+        {
+            if: grounded && swipeUp,
+            then: () => {
+                player.controls.mode = "platform";
+                player.direction.vertical = "up";
+                player.body.force = swipeUp.vector;
+                player.controls.gestures = {};
+            }
+        },
+        {
+            if: grounded && swipeDown,
+            then: () => {
+                player.controls.mode = "platform";
+                player.direction.vertical = "down";
+                player.body.force = swipeDown.vector;
                 player.controls.gestures = {};
             }
         },
