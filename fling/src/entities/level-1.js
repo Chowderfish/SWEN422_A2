@@ -35,7 +35,7 @@ export default restart => {
     ];
 
     var gap = 100; //The gap between each layer
-    let level = [];
+    let layer = [];
     for(var i = 0; i < 10; i++) {
         var random_layer = layers[Math.floor(Math.random() * layers.length)];
         var plat = Platform(// Just the one platform for now
@@ -44,7 +44,7 @@ export default restart => {
             0,
             platformWidth * random_layer.platforms[0].width
         );
-        level[i] = plat;
+        layer[i] = plat;
     }
 
     return {
@@ -68,8 +68,8 @@ export default restart => {
             platformWidth * 10
         ),
 
-        //platform4: level[0],
-        //platform5: level[1],
+        platform4: layer[0],
+        //platform5: layer[1],
 
 
         player: Player(world, { x: cx, y: offsetY + 400  }),
