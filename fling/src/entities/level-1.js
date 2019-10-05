@@ -28,7 +28,7 @@ export default restart => {
     //     platformWidth * 0.25
     // )
     let layers = [ //List of all possible layers. The ascii representation can be seen next to it
-        {first: {disposition: 0, width: 0.25}, second: null}, //                                 |  -  |
+        {first: {disposition: 0, width: 0.25}, second: null}, //                                |  -  |
         {first: {disposition: -50, width: 0.20}, second: {disposition: 50, width: 0.20}}//      |-   -|
     ];
 
@@ -36,18 +36,16 @@ export default restart => {
     let level = [];
     for(var i = 0; i < 10; i++) {
         var random_platform = layers[Math.floor(Math.random() * layers.length).toString()];
-
         var new_platform = Platform(
             world,
-            {x: cx + first.disposition, t: bottom + ((i+1)*gap)},
+            {x: cx + random_platform.first.disposition, t: bottom + ((i+1)*gap)},
             0,
-            platformWidth * first.width
+            platformWidth * random_platform.first.width
         );
-
         level[i] = new_platform;
     }
 
-    
+
 
     return {
         physics: { engine: engine, world: world },
