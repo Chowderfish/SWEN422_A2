@@ -34,7 +34,7 @@ export default restart => {
         //{platforms:[{disposition: -130, width: 0.25}, {disposition: 130, width: 0.20}]},//      |-   -|
     ];
 
-    var gap = -100; //The gap between each layer
+    var gap = -150; //The gap between each layer
     let layer = [];
     for(var i = 0; i < 10; i++) {
         var random_layer = layers[Math.floor(Math.random() * layers.length)];
