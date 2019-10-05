@@ -28,19 +28,19 @@ export default restart => {
     //     platformWidth * 0.25
     // )
     let layers = [ //List of all possible layers. The ascii representation can be seen next to it
-        {platforms:[{disposition: 0, width: 0.25}]}, //                                     |  -  |
-        {platforms:[{disposition: 50, width: 0.25}]}, //                                    |    -|
-        {platforms:[{disposition: -50, width: 0.25}]}, //                                   |-    |
-        {platforms:[{disposition: -50, width: 0.20}, {disposition: 50, width: 0.20}]},//    |-   -| Use this later
+        {platforms:[{disposition: 0, width: 0.25}]}, //                                         |  -  |
+        {platforms:[{disposition: 130, width: 0.25}]}, //                                       |    -|
+        {platforms:[{disposition: -130, width: 0.25}]} //                                       |-    |
+        //{platforms:[{disposition: -130, width: 0.25}, {disposition: 130, width: 0.20}]},//      |-   -|
     ];
 
-    var gap = 100; //The gap between each layer
+    var gap = -100; //The gap between each layer
     let layer = [];
     for(var i = 0; i < 10; i++) {
         var random_layer = layers[Math.floor(Math.random() * layers.length)];
         var plat = Platform(// Just the one platform for now
             world,
-            {x: cx + random_layer.platforms[0].disposition, t: bottom + ((i+1)*gap)},
+            {x: cx + random_layer.platforms[0].disposition, y: bottom + ((i+1)*gap)},
             0,
             platformWidth * random_layer.platforms[0].width
         );
@@ -68,8 +68,16 @@ export default restart => {
             platformWidth * 10
         ),
 
-        //platform4: layer[0], //TODO this throws an error, look here
-        //platform5: layer[1],
+        platform4: layer[0], //TODO this throws an error, look here
+        platform5: layer[1],
+        platform6: layer[2],
+        platform7: layer[3],
+        platform8: layer[4],
+        platform9: layer[5],
+        platform10: layer[6],
+        platform11: layer[7],
+        platform12: layer[8],
+        platform13: layer[9],
 
 
         player: Player(world, { x: cx, y: offsetY + 400  }),
