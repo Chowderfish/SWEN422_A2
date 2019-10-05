@@ -36,9 +36,9 @@ export default restart => {
 
     var gap = -150; //The gap between each layer
     let layer = [];
-    for(var i = 0; i < 10; i++) {
-        var random_layer = layers[Math.floor(Math.random() * layers.length)];
-        var plat = Platform(// Just the one platform for now
+    for(let i = 0; i < 10; i++) {
+        let random_layer = layers[Math.floor(Math.random() * layers.length)];
+        let plat = Platform(// Just the one platform for now
             world,
             {x: cx + random_layer.platforms[0].disposition, y: bottom + ((i+1)*gap)},
             0,
