@@ -68,7 +68,7 @@ export default restart => {
             platformWidth * 10
         ),
 
-        platform4: layer[0],
+        //platform4: layer[0], //TODO this throws an error, look here
         //platform5: layer[1],
 
 
