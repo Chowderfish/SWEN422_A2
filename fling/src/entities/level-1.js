@@ -28,24 +28,24 @@ export default restart => {
     //     platformWidth * 0.25
     // )
     let layers = [ //List of all possible layers. The ascii representation can be seen next to it
-        {first: {disposition: 0, width: 0.25}, second: null}, //                                |  -  |
-        {first: {disposition: -50, width: 0.20}, second: {disposition: 50, width: 0.20}}//      |-   -|
+        {platforms:[{disposition: 0, width: 0.25}]}, //                                     |  -  |
+        {platforms:[{disposition: 50, width: 0.25}]}, //                                    |    -|
+        {platforms:[{disposition: -50, width: 0.25}]}, //                                   |-    |
+        {platforms:[{disposition: -50, width: 0.20}, {disposition: 50, width: 0.20}]},//    |-   -| Use this later
     ];
 
     var gap = 100; //The gap between each layer
     let level = [];
     for(var i = 0; i < 10; i++) {
-        var random_platform = layers[Math.floor(Math.random() * layers.length).toString()];
-        var new_platform = Platform(
+        var random_layer = layers[Math.floor(Math.random() * layers.length)];
+        var plat = Platform(// Just the one platform for now
             world,
-            {x: cx + random_platform.first.disposition, t: bottom + ((i+1)*gap)},
+            {x: cx + random_layer.platforms[0].disposition, t: bottom + ((i+1)*gap)},
             0,
-            platformWidth * random_platform.first.width
+            platformWidth * random_layer.platforms[0].width
         );
-        level[i] = new_platform;
+        level[i] = plat;
     }
-
-
 
     return {
         physics: { engine: engine, world: world },
@@ -67,6 +67,9 @@ export default restart => {
             1.5708,
             platformWidth * 10
         ),
+
+        //platform4: level[0],
+        //platform5: level[1],
 
 
         player: Player(world, { x: cx, y: offsetY + 400  }),
