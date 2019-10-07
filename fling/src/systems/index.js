@@ -5,6 +5,7 @@ import Platforms from "./platforms";
 import Physics from "./physics";
 import Animation from "./animation";
 import Camera from "./camera";
+import Gyroscope from "./gyroscope";
 
 
 export default [
@@ -14,5 +15,6 @@ export default [
     Platforms,
     Animation,
     Camera,
-    Physics
+    Physics,
+    Gyroscope
 ];

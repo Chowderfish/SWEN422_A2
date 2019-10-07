@@ -19,8 +19,11 @@ export default (entities, { events }) => {
 
     let grounded = find(platforms, p => standing(p, player));
 
+    let gyro = events.find(e => e.type === "tilt");
+
     player.controls.gestures = {
-        swipe
+        swipe,
+        gyro
     };
 
     let modes = [
@@ -39,6 +42,15 @@ export default (entities, { events }) => {
                     player.direction.vertical = "up"
                 }
                 player.body.force = swipe.vector;
+                player.controls.gestures = {};
+            }
+        },
+        {
+            if: grounded && gyro,
+            then: () => {
+                player.controls.mode = "platform";
+                player.direction.horizontal = "up";
+                player.body.force = gyro.vector;
                 player.controls.gestures = {};
             }
         },
