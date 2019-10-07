@@ -33,8 +33,6 @@ import {Accelerometer} from "expo-sensors";
         y: this.accelerometerDataY
     };
 
-    console.log(this.accelerometerDataX);
-
     dispatch({type: "tilt", vector: move_vector});
   }
 

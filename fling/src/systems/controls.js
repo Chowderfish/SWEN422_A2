@@ -21,6 +21,8 @@ export default (entities, { events }) => {
 
     let gyro = events.find(e => e.type === "tilt");
 
+    let falling = find(platforms, p => !standing(p,player));
+
     player.controls.gestures = {
         swipe,
         gyro
@@ -44,9 +46,9 @@ export default (entities, { events }) => {
             }
         },
         {
-            if: grounded && gyro,
+            if: falling && gyro,
             then: () => {
-                player.controls.mode = "platform";
+                player.controls.mode = "falling";
                 if (gyro.vector.x > 0) {
                     player.direction.horizontal = "right";
                 } else if (gyro.vector.x < 0) {

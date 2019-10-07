@@ -60,7 +60,8 @@ export default (world, pos) => {
         size: { width, height },
         controls: {
             gestures: {},
-            mode: "platform"
+            mode: "platform",
+            mode:  "falling"
         },
         direction: {
             horizontal: "right",
