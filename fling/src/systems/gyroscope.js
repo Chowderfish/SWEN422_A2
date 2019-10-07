@@ -13,7 +13,7 @@ import {Accelerometer} from "expo-sensors";
 
   _subscribe = () => {
     this._subscription = Accelerometer.addListener((result) => {
-      accelerometerDataX = result.x * -1;
+      accelerometerDataX = result.x * 2.5;
       accelerometerDataY = result.y;
     });
   };
@@ -27,6 +27,7 @@ import {Accelerometer} from "expo-sensors";
 
   tilt = (dispatch) => {
     _subscribe();
+    _fast();
     let move_vector = {
         x: this.accelerometerDataX,
         y: this.accelerometerDataY

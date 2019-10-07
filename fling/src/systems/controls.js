@@ -31,17 +31,15 @@ export default (entities, { events }) => {
             if: grounded && swipe,
             then: () => {
                 player.controls.mode = "platform";
-                if (swipe.vector.x > 0) {
-                    player.direction.horizontal = "right";
-                } else if (swipe.vector.x < 0) {
-                    player.direction.horizontal = "left";
-                }
-                if (swipe.vector.y > 0) {
-                    player.direction.vertical = "down";
-                } else if (swipe.vector.y < 0) {
+                if (swipe.vector.y < 0) {
+                    if (swipe.vector.x > 0) {
+                        player.direction.horizontal = "right";
+                    } else if (swipe.vector.x < 0) {
+                        player.direction.horizontal = "left";
+                    }
                     player.direction.vertical = "up"
+                    player.body.force = swipe.vector;
                 }
-                player.body.force = swipe.vector;
                 player.controls.gestures = {};
             }
         },
@@ -49,7 +47,11 @@ export default (entities, { events }) => {
             if: grounded && gyro,
             then: () => {
                 player.controls.mode = "platform";
-                player.direction.horizontal = "up";
+                if (gyro.vector.x > 0) {
+                    player.direction.horizontal = "right";
+                } else if (gyro.vector.x < 0) {
+                    player.direction.horizontal = "left";
+                }
                 player.body.force = gyro.vector;
                 player.controls.gestures = {};
             }

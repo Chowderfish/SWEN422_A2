@@ -38,7 +38,7 @@ const swipe = (touches, dispatch) => {
 
         if (swipeEnded) {
             let deltaX = (swipeEnded.x - swipeStarted.x) / 5;
-            let deltaY = (swipeEnded.y - swipeStarted.y) / 10;
+            let deltaY = (swipeEnded.y - swipeStarted.y) / 4;
 
             if (verbose) {
                 console.log("Dispatching swipe event");
