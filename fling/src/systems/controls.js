@@ -57,7 +57,7 @@ export default (entities, { events }) => {
                   } else if (vector.x < 0) {
                       player.direction.horizontal = "left";
                   }
-                  vector.x = -vector.x;
+                  vector.x = -vector.x; //Inverts it
                   player.body.force = vector;
                   player.controls.gestures = {};
               }
