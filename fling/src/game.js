@@ -59,7 +59,6 @@ export default class Game extends PureComponent {
     };
 
     render() {
-        console.log(this.state.gameOver)
         return (
             <Modal
                 transparent={false}

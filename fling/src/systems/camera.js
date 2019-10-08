@@ -1,13 +1,15 @@
 export default (entities, { screen }) => {
     let player = entities.player;
     let camera = entities.camera;
-    let targetY = 100 + camera.offsetY;
-    let anchorY = screen.height * 0.65;
-    let diff = anchorY - player.body.position.y - camera.offsetY;
+    let anchorY = player.body.position.y;
 
-    if (targetY < 150 || diff < 0) {
-        camera.offsetY += diff * 0.05;
+    let oldPos = camera.offsetY;
+    let newPos = -anchorY + 500;
+
+    if(newPos > oldPos){
+        camera.offsetY = -anchorY + 500
     }
+
 
     return entities;
 }
