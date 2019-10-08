@@ -4,7 +4,7 @@ import {round} from "lodash/math";
 
 export default class Renderer extends Component {
     render() {
-      //console.log(this.props);
+
         return (
           <Text
             style={styles.titleText} 
@@ -21,6 +21,6 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 20,
     fontWeight: 'bold',
-    alignSelf: "center",
-  },
+    position: 'absolute',
+},
 });

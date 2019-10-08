@@ -91,7 +91,7 @@ export default restart => {
         player: Player(world, { x: cx, y: offsetY + 400  }),
 
         camera: { offsetY: 0 },
+        score: {score: 0, renderer: <ScoreRender />},
         aim: {renderer: <AimRender />},
-        score: {score: 0, renderer: <ScoreRender />}
     };
 };
