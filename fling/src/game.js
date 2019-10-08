@@ -4,6 +4,7 @@ import { GameEngine, DefaultTouchProcessor } from "react-native-game-engine";
 import CameraRenderer from "./utils/cameraRenderer";
 import LevelOne from "./entities/level-1";
 import Systems from "./systems";
+import GameOver from "./menus/gameover";
 
 export default class Game extends PureComponent {
     constructor(props) {
@@ -42,15 +43,10 @@ export default class Game extends PureComponent {
 
     gameOver = () => {
         this.setState({
-            running: false
+            running: false,
+            gameOver: true
         });
 
-        //-- Let the player wallow in their failure for a second or two..
-        setTimeout(() => {
-            this.setState({
-                gameOver: true
-            });
-        }, 1000);
     };
 
 
@@ -63,6 +59,7 @@ export default class Game extends PureComponent {
     };
 
     render() {
+        console.log(this.state.gameOver)
         return (
             <Modal
                 transparent={false}

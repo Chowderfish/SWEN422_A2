@@ -21,10 +21,9 @@ const removeEntitiesThatHaveFallenTooFar = entities => {
 
 const checkIfPlayerHasFallenOff = (entities, dispatch) => {
     let player = entities.player;
-
     if (player.body.position.y > 1000) {
         Matter.Sleeping.set(player.body, true);
-        player.action = "dead";
+        player.action = "idling";
         dispatch({ type: "game-over" });
     }
 

@@ -41,7 +41,6 @@ export default (entities, { events }) => {
                     }
                     player.direction.vertical = "up";
                     player.body.force = swipe.vector;
-                    player.action = "jumping"
                 }
                 player.controls.gestures = {};
             }
@@ -66,7 +65,7 @@ export default (entities, { events }) => {
         },
         {
             if: true,
-            then: () => { player.action = "idling"}
+            then: () => { }
         }
     ];
 

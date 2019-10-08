@@ -3,7 +3,7 @@ import { View, StatusBar, StyleSheet } from "react-native";
 import MainMenu from "./src/menus/main";
 import Game from "./src/game";
 
-export default class DonkeyKong extends PureComponent {
+export default class Fling extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

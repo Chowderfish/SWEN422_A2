@@ -68,7 +68,7 @@ export default (entities, { events }) => {
         {
             if: true,
             then: () => {
-                player.action = "idling";
+                //player.action = "idling";
             }
         }
     ];
