@@ -7,6 +7,7 @@ import Animation from "./animation";
 import Camera from "./camera";
 import Gyroscope from "./gyroscope";
 import Score from "./score";
+import Aim from "./aim"
 
 
 export default [
@@ -18,5 +19,6 @@ export default [
     Camera,
     Physics,
     Gyroscope,
-    Score
+    Score,
+    Aim
 ];

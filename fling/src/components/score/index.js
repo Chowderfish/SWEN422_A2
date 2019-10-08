@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { StyleSheet, Text } from "react-native";
+import {round} from "lodash/math";
 
 export default class Renderer extends Component {
     render() {
-      console.log(this.props);
+      //console.log(this.props);
         return (
           <Text
             style={styles.titleText} 
-          >
-            {this.props.score}
+          >Score: {round(this.props.score / 10000)}
           </Text>
         );
     }
@@ -21,6 +21,6 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 20,
     fontWeight: 'bold',
-    position: 'absolute',
+    alignSelf: "center",
   },
 });

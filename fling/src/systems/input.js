@@ -36,6 +36,11 @@ const swipe = (touches, dispatch) => {
             swipeStarted = { x: lastMoveEvent.event.locationX, y: lastMoveEvent.event.locationY };
         }
 
+        if(swipeStarted && lastMoveEvent){
+            let aim_vector = { startX: swipeStarted.x, startY: swipeStarted.y, endX: lastMoveEvent.event.locationX, endY:  lastMoveEvent.event.locationY};
+            dispatch({ type: "aim", aim_vector: aim_vector });
+        }
+
         if (swipeEnded) {
             let deltaX = (swipeEnded.x - swipeStarted.x) / 5;
             let deltaY = (swipeEnded.y - swipeStarted.y) / 4;

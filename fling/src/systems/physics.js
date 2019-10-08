@@ -22,8 +22,7 @@ const removeEntitiesThatHaveFallenTooFar = entities => {
 const checkIfPlayerHasFallenOff = (entities, dispatch) => {
     let player = entities.player;
     let camera = entities.camera;
-   
-    //here we can check the camera position for falling off screen instead of 1000
+
     if (player.posY+200 < camera.offsetY) {
         Matter.Sleeping.set(player.body, true);
         player.action = "idling";

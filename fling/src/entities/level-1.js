@@ -4,6 +4,7 @@ import Matter from "matter-js";
 import Platform from "../components/platform";
 import Player from "../components/player";
 import ScoreRender from '../components/score';
+import AimRender from '../components/aim';
 
 Matter.Common.isElement = () => false;
 
@@ -23,7 +24,7 @@ export default restart => {
     let world = engine.world;
     world.gravity = { x: 0, y: 2 };
 
-    let bottom = offsetY+500;
+    let bottom = offsetY+600;
     let layers = [ //List of all possible layers. The ascii representation can be seen next to it
         {platforms:[{disposition: 0, width: 0.25}]}, //                                         |  -  |
         {platforms:[{disposition: 130, width: 0.25}]}, //                                       |    -|
@@ -90,6 +91,7 @@ export default restart => {
         player: Player(world, { x: cx, y: offsetY + 400  }),
 
         camera: { offsetY: 0 },
+        aim: {renderer: <AimRender />},
         score: {score: 0, renderer: <ScoreRender />}
     };
 };
