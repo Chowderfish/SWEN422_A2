@@ -22,17 +22,11 @@ export default restart => {
     world.gravity = { x: 0, y: 2 };
 
     let bottom = offsetY+500;
-    // plat_1: Platform(
-    //     world,
-    //     { x: cx-50, y: offsetY + 500  },
-    //     0,
-    //     platformWidth * 0.25
-    // )
     let layers = [ //List of all possible layers. The ascii representation can be seen next to it
         {platforms:[{disposition: 0, width: 0.25}]}, //                                         |  -  |
         {platforms:[{disposition: 130, width: 0.25}]}, //                                       |    -|
         {platforms:[{disposition: -130, width: 0.25}]} //                                       |-    |
-        //{platforms:[{disposition: -130, width: 0.25}, {disposition: 130, width: 0.20}]},//      |-   -|
+        //{platforms:[{disposition: -130, width: 0.25}, {disposition: 130, width: 0.20}]},//    |-   -|
     ];
 
     var gap = -100; //The gap between each layer
@@ -90,8 +84,6 @@ export default restart => {
         platform18: layer[14],
         platform19: layer[15],
         platform20: layer[16],
-
-
 
         player: Player(world, { x: cx, y: offsetY + 400  }),
 
