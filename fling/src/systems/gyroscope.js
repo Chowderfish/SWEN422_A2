@@ -13,8 +13,12 @@ import {Accelerometer} from "expo-sensors";
 
   _subscribe = () => {
     this._subscription = Accelerometer.addListener((result) => {
-      accelerometerDataX = result.x * 2.5;
-      accelerometerDataY = result.y;
+      let {x, y} = result;
+      if (x == NaN || y == NaN) ;
+      else {
+        accelerometerDataX = x * 2.5;
+        accelerometerDataY = y;
+      }
     });
   };
 

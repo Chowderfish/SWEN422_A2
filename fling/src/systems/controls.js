@@ -48,14 +48,19 @@ export default (entities, { events }) => {
         {
             if: falling && gyro,
             then: () => {
-                player.controls.mode = "falling";
-                if (gyro.vector.x > 0) {
-                    player.direction.horizontal = "right";
-                } else if (gyro.vector.x < 0) {
-                    player.direction.horizontal = "left";
-                }
-                player.body.force = gyro.vector;
-                player.controls.gestures = {};
+                let {vector} = gyro;
+                if (vector.x === undefined || vector.y === undefined);
+                else {
+                  player.controls.mode = "falling";
+                  if (vector.x > 0) {
+                      player.direction.horizontal = "right";
+                  } else if (vector.x < 0) {
+                      player.direction.horizontal = "left";
+                  }
+                  vector.x = -vector.x
+                  player.body.force = vector;
+                  player.controls.gestures = {};
+              }
             }
         },
         {
