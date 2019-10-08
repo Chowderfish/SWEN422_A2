@@ -10,6 +10,7 @@ export default (entities, { screen }) => {
         camera.offsetY = -anchorY + 500
     }
 
+    player.posY = 570 +  (-player.body.position.y);
 
     return entities;
 }

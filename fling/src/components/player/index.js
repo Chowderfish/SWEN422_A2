@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
 export default (world, pos) => {
     let width = 30;
     let height = 40;
+    let posY = -470;
     let body = Matter.Bodies.rectangle(pos.x, pos.y, width, height, {
         density: 0.8,
         frictionAir: 0.2,
@@ -58,6 +59,7 @@ export default (world, pos) => {
     Matter.World.add(world, [body]);
     return {
         body,
+        posY,
         size: { width, height },
         controls: {
             gestures: {},
