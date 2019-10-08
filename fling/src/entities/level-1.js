@@ -1,7 +1,9 @@
+import React from 'react';
 import { Dimensions } from "react-native";
 import Matter from "matter-js";
 import Platform from "../components/platform";
 import Player from "../components/player";
+import ScoreRender from '../components/score';
 
 Matter.Common.isElement = () => false;
 
@@ -87,6 +89,7 @@ export default restart => {
 
         player: Player(world, { x: cx, y: offsetY + 400  }),
 
-        camera: { offsetY: 0 }
+        camera: { offsetY: 0 },
+        score: {score: 0, renderer: <ScoreRender />}
     };
 };
