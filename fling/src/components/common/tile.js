@@ -11,7 +11,7 @@ export default class Tile extends PureComponent {
         return (
             <Image
                 source={source}
-                resizeMode={"repeat"}
+                resizeMode={"stretch"}
                 style={[
                     styles.container,
                     {

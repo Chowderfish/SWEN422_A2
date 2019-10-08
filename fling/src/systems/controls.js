@@ -29,7 +29,7 @@ export default (entities, { events }) => {
     };
 
     let modes = [
-        {
+                {
             if: grounded && swipe,
             then: () => {
                 player.controls.mode = "platform";
@@ -39,8 +39,9 @@ export default (entities, { events }) => {
                     } else if (swipe.vector.x < 0) {
                         player.direction.horizontal = "left";
                     }
-                    player.direction.vertical = "up"
+                    player.direction.vertical = "up";
                     player.body.force = swipe.vector;
+                    player.action = "jumping"
                 }
                 player.controls.gestures = {};
             }
@@ -57,7 +58,7 @@ export default (entities, { events }) => {
                   } else if (vector.x < 0) {
                       player.direction.horizontal = "left";
                   }
-                  vector.x = -vector.x
+                  vector.x = -vector.x;
                   player.body.force = vector;
                   player.controls.gestures = {};
               }
@@ -65,7 +66,7 @@ export default (entities, { events }) => {
         },
         {
             if: true,
-            then: () => {}
+            then: () => { player.action = "idling"}
         }
     ];
 

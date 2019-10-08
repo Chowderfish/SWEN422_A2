@@ -17,8 +17,7 @@ export class Renderer extends PureComponent {
     }
 }
 
-export default (world, pos, angle, width, category = 0x0002) => {
-    let height = 20;
+export default (world, pos, angle, width, height) => {
     let body = Matter.Bodies.rectangle(pos.x, pos.y, width, height, {
         isStatic: true,
         angle: angle,

@@ -11,6 +11,7 @@ const cx = width / 2;
 const cy = height / 2;
 const offsetY = (height - 465) / 2 - 35;
 const platformWidth = Math.min(width, 430);
+const platformHeight = 10;
 
 export default restart => {
     //-- Cleanup existing entities..
@@ -42,7 +43,8 @@ export default restart => {
             world,
             {x: cx + random_layer.platforms[0].disposition, y: bottom + ((i+1)*gap)},
             0,
-            platformWidth * random_layer.platforms[0].width
+            platformWidth * random_layer.platforms[0].width,
+            platformHeight,
         );
         layer[i] = plat;
     }
@@ -53,19 +55,22 @@ export default restart => {
             world,
             { x: cx, y: bottom },
             0,
-            platformWidth
+            width,
+            20,
         ),
         platform2: Platform( //Right wall. This needs bouncy mechanic
             world,
             { x: width, y: bottom},
             1.5708,
-            platformWidth * 10
+            platformWidth * 10,
+            platformHeight,
         ),
         platform3: Platform( //Left wall. This also needs bouncy mechanic
             world,
             { x: 0, y: bottom},
             1.5708,
-            platformWidth * 10
+            platformWidth * 10,
+            platformHeight,
         ),
 
         platform4: layer[0], //TODO this throws an error, look here

@@ -3,8 +3,9 @@ import { StyleSheet, Image } from "react-native";
 import { collisionCategories } from "../../utils/constants";
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 import Matter from "matter-js";
-import PlayerIdling from "./player-idling.gif";
-
+import PlayerIdling from "./player-idling.png";
+import PlayerWalking from "./player-idling.png";
+import PlayerJumping from "./player-jumping.png";
 
 export class Renderer extends Component {
     render() {
@@ -61,7 +62,6 @@ export default (world, pos) => {
         controls: {
             gestures: {},
             mode: "platform",
-            mode:  "falling"
         },
         direction: {
             horizontal: "right",
@@ -70,8 +70,8 @@ export default (world, pos) => {
         action: "idling",
         actions: {
             idling: resolveAssetSource(PlayerIdling),
-            walking: resolveAssetSource(PlayerIdling),
-            jumping: resolveAssetSource(PlayerIdling),
+            walking: resolveAssetSource(PlayerWalking),
+            jumping: resolveAssetSource(PlayerJumping),
         },
         "power-ups": {},
         animations: {},

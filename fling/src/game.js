@@ -94,6 +94,6 @@ export default class Game extends PureComponent {
 
 const styles = StyleSheet.create({
     game: {
-        backgroundColor: "#000"
+        backgroundColor: "rgba(0,176,255,0.5)"
     }
 });
