@@ -1,4 +1,5 @@
 import {Accelerometer} from "expo-sensors";
+import {Platform} from "react-native";
 
     const accelerometerData = 0;
 
@@ -16,7 +17,7 @@ import {Accelerometer} from "expo-sensors";
       let {x, y} = result;
       if (x == NaN || y == NaN) ;
       else {
-        accelerometerDataX = x * 2.5;
+        accelerometerDataX = Platform.OS === 'ios' ? x * -2.5 : x * 2.5;
         accelerometerDataY = y;
       }
     });
