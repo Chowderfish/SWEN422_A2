@@ -16,6 +16,8 @@ const offsetY = 0;
 const platformWidth = Math.min(width, 430);
 const platformHeight = 10;
 
+const level_size = 400; //Change me to change the level size
+
 export default restart => {
     //-- Cleanup existing entities..
     if (restart) Matter.Engine.clear(restart.physics.engine);
@@ -41,7 +43,7 @@ export default restart => {
 
     var gap = -100; //The gap between each layer
     let layer = [];
-    for(let i = 0; i < 400; i++) {
+    for(let i = 0; i < level_size; i++) {
         let random_layer = layers[Math.floor(Math.random() * layers.length)];
         let plat = Platform(// Just the one platform for now
             world,
@@ -83,7 +85,7 @@ export default restart => {
         score: {score: 0, renderer: <ScoreRender />},
         aim: {renderer: <AimRender />},
     };
-    for(var i = 0; i < 400; i++) {
+    for(var i = 0; i < level_size; i++) {
         lev['platform' + i] = layer[i];
     }
     return lev;
