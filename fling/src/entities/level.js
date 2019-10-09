@@ -28,13 +28,20 @@ export default restart => {
     let layers = [ //List of all possible layers. The ascii representation can be seen next to it
         {platforms:[{disposition: 0, width: 0.25}]}, //                                         |  -  |
         {platforms:[{disposition: 130, width: 0.25}]}, //                                       |    -|
-        {platforms:[{disposition: -130, width: 0.25}]} //                                       |-    |
+        {platforms:[{disposition: -130, width: 0.25}]},//                                       |-    |
+        //{platforms:[{disposition: 60, width: 0.25}]},
+        {platforms:[{disposition: Math.round(Math.random()*130), width: 0.25}]},
+        {platforms:[{disposition: Math.round(Math.random()*130), width: 0.25}]},
+        {platforms:[{disposition: Math.round(Math.random()*130), width: 0.25}]},
+        {platforms:[{disposition: -Math.round(Math.random()*130), width: 0.25}]},
+        {platforms:[{disposition: -Math.round(Math.random()*130), width: 0.25}]},
+        {platforms:[{disposition: -Math.round(Math.random()*130), width: 0.25}]},
         //{platforms:[{disposition: -130, width: 0.25}, {disposition: 130, width: 0.20}]},//    |-   -|
     ];
 
     var gap = -100; //The gap between each layer
     let layer = [];
-    for(let i = 0; i < 20; i++) {
+    for(let i = 0; i < 40; i++) {
         let random_layer = layers[Math.floor(Math.random() * layers.length)];
         let plat = Platform(// Just the one platform for now
             world,
@@ -87,6 +94,23 @@ export default restart => {
         platform18: layer[14],
         platform19: layer[15],
         platform20: layer[16],
+
+        platform21: layer[17],
+        platform22: layer[18],
+        platform23: layer[19],
+        platform24: layer[20],
+        platform25: layer[21],
+        platform26: layer[22],
+        platform27: layer[23],
+        platform28: layer[24],
+        platform29: layer[25],
+        platform30: layer[26],
+        platform31: layer[27],
+        platform32: layer[28],
+        platform33: layer[29],
+        platform34: layer[30],
+        platform35: layer[31],
+        platform36: layer[32],
 
         player: Player(world, { x: cx, y: offsetY + 400  }),
 

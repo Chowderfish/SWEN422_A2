@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { StyleSheet, Modal } from "react-native";
 import { GameEngine, DefaultTouchProcessor } from "react-native-game-engine";
 import CameraRenderer from "./utils/cameraRenderer";
-import LevelOne from "./entities/level-1";
+import LevelOne from "./entities/level";
 import Systems from "./systems";
 import GameOver from "./menus/gameover";
 
