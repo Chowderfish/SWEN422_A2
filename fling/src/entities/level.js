@@ -26,7 +26,7 @@ export default restart => {
     let world = engine.world;
     world.gravity = { x: 0, y: 2 };
 
-    let bottom = offsetY+600;
+    let bottom = height-100;//offsetY+600
     let layers = [ //List of all possible layers. The ascii representation can be seen next to it
         {platforms:[{disposition: 0, width: 0.25}]}, //                                         |  -  |
         {platforms:[{disposition: 130, width: 0.25}]}, //                                       |    -|
