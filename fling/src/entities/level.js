@@ -16,7 +16,7 @@ const offsetY = 0;
 const platformWidth = Math.min(width, 430);
 const platformHeight = 10;
 
-const level_size = 400; //Change me to change the level size
+const level_size = 100; //Change me to change the level size
 
 export default restart => {
     //-- Cleanup existing entities..
@@ -57,21 +57,21 @@ export default restart => {
 
     let lev = {
         physics: { engine: engine, world: world },
-        platform1: Platform( //Bottom floor
+        platformStart: Platform( //Bottom floor
             world,
-            { x: cx, y: bottom },
+            { x: cx, y: height - 100 },
             0,
-            width-150,
-            20,
+            width,
+            60,
         ),
-        platform2: Platform( //Right wall. This needs bouncy mechanic
+        wallLeft: Platform( //Right wall. This needs bouncy mechanic
             world,
             { x: width, y: bottom},
             1.5708,
             platformWidth * 10,
             platformHeight,
         ),
-        platform3: Platform( //Left wall. This also needs bouncy mechanic
+        wallRight: Platform( //Left wall. This also needs bouncy mechanic
             world,
             { x: 0, y: bottom},
             1.5708,
