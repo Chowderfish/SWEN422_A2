@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { StyleSheet, Text } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import Svg, {Text} from "react-native-svg";
 import {round} from "lodash/math";
 import {Dimensions} from "react-native";
@@ -17,13 +17,13 @@ export default class Renderer extends Component {
     }
 }
 
-// const styles = StyleSheet.create({
-//   baseText: {
-//     fontFamily: 'Cochin',
-//   },
-//   titleText: {
-//     fontSize: 20,
-//     fontWeight: 'bold',
-//     position: 'absolute',
-// },
-// });
+const styles = StyleSheet.create({
+  baseText: {
+    fontFamily: 'Cochin',
+  },
+  titleText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    position: 'absolute',
+},
+});

@@ -13,11 +13,8 @@ export default class Game extends PureComponent {
         this.state = {
             running: false,
             gameOver: false,
-<<<<<<< HEAD
-            score: 0
-=======
+            score: 0,
             scoreBoard: [],
->>>>>>> 6494c784a91fcbb9c576a2eeade6b058971f1768
         };
       AsyncStorage.getItem('scores')
         .then(d => {
