@@ -67,7 +67,7 @@ export default restart => {
         wallLeft: Platform( //Right wall. This needs bouncy mechanic
             world,
             { x: width, y: bottom},
-            1.5708,
+            4.7124,
             platformWidth * 10,
             platformHeight,
         ),

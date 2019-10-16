@@ -6,8 +6,8 @@ export default class Renderer extends Component {
     render() {
 
         return (
-          <Text
-            style={styles.titleText} 
+          <Text 
+            style={styles.titleText}
           >Score: {round(this.props.score / 10000)}
           </Text>
         );

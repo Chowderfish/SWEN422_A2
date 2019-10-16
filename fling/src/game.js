@@ -5,6 +5,7 @@ import CameraRenderer from "./utils/cameraRenderer";
 import LevelOne from "./entities/level";
 import Systems from "./systems";
 import GameOver from "./menus/gameover";
+import ScoreRenderer from "./components/score"
 
 export default class Game extends PureComponent {
     constructor(props) {
@@ -12,6 +13,7 @@ export default class Game extends PureComponent {
         this.state = {
             running: false,
             gameOver: false,
+            score: 0
         };
     }
 
@@ -52,6 +54,10 @@ export default class Game extends PureComponent {
 
     handleEvent = ev => {
         switch (ev.type) {
+            case 'score-update':
+                console.log(ev);
+                this.setState({score: ev.value});
+                break;
             case "game-over":
                 this.gameOver();
                 break;
@@ -59,6 +65,7 @@ export default class Game extends PureComponent {
     };
 
     render() {
+        let entities = LevelOne();
         return (
             <Modal
                 transparent={false}
@@ -70,7 +77,7 @@ export default class Game extends PureComponent {
                     ref={"engine"}
                     style={styles.game}
                     systems={Systems}
-                    entities={LevelOne()}
+                    entities={entities}
                     renderer={CameraRenderer}
                     touchProcessor={DefaultTouchProcessor({
                         triggerPressEventBefore: 150,
@@ -83,6 +90,8 @@ export default class Game extends PureComponent {
                         <GameOver onPlayAgain={this.restart} onQuit={this.quit} />
                     )}
                 </GameEngine>
+
+                <ScoreRenderer score={this.state.score}/>
             </Modal>
         );
     }
