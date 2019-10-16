@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { StyleSheet, Text } from "react-native";
-import Svg, {Text} from "react-native-svg";
 import {round} from "lodash/math";
 import {Dimensions} from "react-native";
 

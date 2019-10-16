@@ -64,11 +64,9 @@ export default class Game extends PureComponent {
     handleEvent = ev => {
         switch (ev.type) {
             case 'score-update':
-                console.log(ev);
                 this.setState({score: ev.value});
                 break;
             case "game-over":
-                console.log(ev.score);
                 this.gameOver();
                 break;
         }
