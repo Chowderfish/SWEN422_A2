@@ -85,6 +85,7 @@ export default restart => {
         score: {score: 0, renderer: <ScoreRender />},
         aim: {renderer: <AimRender />},
     };
+
     for(var i = 0; i < level_size; i++) {
         lev['platform' + i] = layer[i];
     }

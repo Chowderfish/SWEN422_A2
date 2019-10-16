@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { StyleSheet, Modal } from "react-native";
+import { AsyncStorage, StyleSheet, Modal } from "react-native";
 import { GameEngine, DefaultTouchProcessor } from "react-native-game-engine";
 import CameraRenderer from "./utils/cameraRenderer";
 import LevelOne from "./entities/level";
@@ -13,8 +13,20 @@ export default class Game extends PureComponent {
         this.state = {
             running: false,
             gameOver: false,
+<<<<<<< HEAD
             score: 0
+=======
+            scoreBoard: [],
+>>>>>>> 6494c784a91fcbb9c576a2eeade6b058971f1768
         };
+      AsyncStorage.getItem('scores')
+        .then(d => {
+          if (d === null) {
+            AsyncStorage.setItem('scores', '[{"name": "Jacob", "score": 200}]');
+          }
+          else
+            this.setState({scoreBoard: JSON.parse(d)});
+        }).catch(_ => this.gameOver());
     }
 
     componentWillReceiveProps(nextProps) {
@@ -59,6 +71,7 @@ export default class Game extends PureComponent {
                 this.setState({score: ev.value});
                 break;
             case "game-over":
+                console.log(ev.score);
                 this.gameOver();
                 break;
         }
@@ -87,7 +100,7 @@ export default class Game extends PureComponent {
                     onEvent={this.handleEvent}
                 >
                     {this.state.gameOver && (
-                        <GameOver onPlayAgain={this.restart} onQuit={this.quit} />
+                        <GameOver scoreBoard={this.state.scoreBoard} updateScoreBoard={this._updateHighScore} onPlayAgain={this.restart} onQuit={this.quit} />
                     )}
                 </GameEngine>
 
@@ -95,10 +108,15 @@ export default class Game extends PureComponent {
             </Modal>
         );
     }
+
+    _updateHighScore = async (scoreBoard) => {
+      this.setState({scoreBoard});
+      AsyncStorage.setItem('score', JSON.stringify(scoreBoard));
+    }
 }
 
 const styles = StyleSheet.create({
     game: {
-        backgroundColor: "rgba(0,176,255,0.5)"
+        backgroundColor: 'rgba(0,176,255,0.5)'
     }
 });

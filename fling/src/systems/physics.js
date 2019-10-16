@@ -20,13 +20,12 @@ const removeEntitiesThatHaveFallenTooFar = entities => {
 };
 
 const checkIfPlayerHasFallenOff = (entities, dispatch) => {
-    let player = entities.player;
-    let camera = entities.camera;
+    let {camera, player, score} = entities;
 
     if (player.posY+200 < camera.offsetY) {
         Matter.Sleeping.set(player.body, true);
         player.action = "idling";
-        dispatch({ type: "game-over" });
+        dispatch({ type: "game-over", score: score.score });
     }
 
     return entities;
