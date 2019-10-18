@@ -2,6 +2,9 @@ import { any } from "../utils";
 
 let verbose = false; //Exposes touch events to console for debugging
 
+const inputModes = ["fling", "slingshot"];
+let inputMode = "slingshot";
+
 let swipeStarted;
 let swipeEnded;
 let lastMoveEvent;
@@ -50,7 +53,14 @@ const swipe = (touches, dispatch) => {
                 console.log("dX = " + deltaX + " dY = " + deltaY);
             }
 
-            let move_vector = { x: deltaX, y: deltaY };
+            let move_vector;
+            if (inputMode === inputModes[0]) {
+                move_vector = { x: deltaX, y: deltaY };
+            } else if (inputMode === inputModes[1]) {
+                move_vector = { x: (0-deltaX), y: (0-deltaY) };
+            } else {
+                Error("Unrecognised input mode found : input.js:61");
+            }
 
             swipeStarted = undefined;
             swipeEnded = undefined;
