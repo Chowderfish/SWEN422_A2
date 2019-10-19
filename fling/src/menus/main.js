@@ -8,7 +8,7 @@ import {
     Text,
 } from "react-native";
 
-const modes = ['Fling', 'Slingshot'];
+const modes = ['slingshot', 'fling'];
 
 export default class MainMenu extends PureComponent {
 
