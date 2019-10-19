@@ -35,8 +35,8 @@ let count = 0;
 const updatePlatformCollisionFilters = entities => {
     let player = entities.player;
     let platforms = filter(entities, "platform");
-    let active = filter(platforms, p => aboveTopEdge(p, shift(base(player), 0, -2)));
-    let inactive = filter(platforms, p => !aboveTopEdge(p, shift(base(player), 0, -2)));
+    let active = filter(platforms, p => aboveTopEdge(p, shift(base(player), 0, -6)));
+    let inactive = filter(platforms, p => !aboveTopEdge(p, shift(base(player), 0, -6)));
 
     active.forEach(x => {
         x.body.collisionFilter.mask = collisionCategories.player;
