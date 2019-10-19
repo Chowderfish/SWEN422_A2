@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import {changeInput} from '../systems/input';
 import {
     ScrollView,
     Button,
@@ -7,13 +8,15 @@ import {
     Text,
 } from "react-native";
 
+const modes = ['Fling', 'Slingshot'];
+
 export default class MainMenu extends PureComponent {
 
     state = {controlValue: false};
 
     toggleSwitch = (value) => {
         this.setState({controlValue: value})
-        this.props.changeCon(value);
+        changeInput(modes[value * 1]);
     };
 
     render() {
