@@ -7,24 +7,32 @@ export default class Fling extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      gameVisible: false
+      gameVisible: false,
+        controls: false
     };
   }
 
-  toggleGame = gameVisible => {
-    this.setState({
-      gameVisible
-    });
-  };
+    changeCon = controls => {
+        this.setState({
+            controls
+        });
+    };
+
+    toggleGame = gameVisible => {
+        this.setState({
+          gameVisible
+        });
+    };
 
   render() {
     return (
         <View style={styles.container}>
           <StatusBar barStyle={"light-content"} hidden={this.state.gameVisible} animated showHideTransition={"slide"} />
-          <MainMenu onPlayGame={_ => this.toggleGame(true)} />
+          <MainMenu onPlayGame={_ => this.toggleGame(true)} changeCon={this.changeCon}/>
           <Game
               visible={this.state.gameVisible}
               onClose={_ => this.toggleGame(false)}
+              controls={this.state.controls}
           />
         </View>
     );

@@ -10,6 +10,7 @@ let swipeEnded;
 let lastMoveEvent;
 
 const swipe = (touches, dispatch) => {
+    console.log(dispatch)
     let move = touches.find(x => (x.type === "move" || x.type === "long-press"));
     let fingerUp = any(touches, "type", "end");
     let fingerDown = any(touches, "type", ["long-press", "move"]);

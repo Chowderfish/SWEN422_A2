@@ -3,9 +3,19 @@ import {
     ScrollView,
     Button,
     StyleSheet,
+    Switch,
+    Text,
 } from "react-native";
 
 export default class MainMenu extends PureComponent {
+
+    state = {controlValue: false};
+
+    toggleSwitch = (value) => {
+        this.setState({controlValue: value})
+        this.props.changeCon(value);
+    };
+
     render() {
         return (
             <ScrollView
@@ -14,6 +24,13 @@ export default class MainMenu extends PureComponent {
             >
 
                 <Button onPress={this.props.onPlayGame} title="Play Game">Play</Button>
+
+                <Switch
+                    style={{marginTop:30}}
+                    onValueChange = {this.toggleSwitch}
+                    value = {this.state.controlValue}
+                />
+                <Text>Control Mode: {this.state.controlValue ? 'Fling' : 'Slingshot'}</Text>
 
             </ScrollView>
         );
