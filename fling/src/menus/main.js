@@ -7,6 +7,8 @@ import {
     StyleSheet,
     Switch,
     Text,
+    Image,
+    View
 } from "react-native";
 
 const modes = ['slingshot', 'fling'];
@@ -32,7 +34,15 @@ export default class MainMenu extends PureComponent {
                 contentContainerStyle={styles.contentContainer}
             >
 
-                <Button onPress={this.props.onPlayGame} title="Play Game">Play</Button>
+                <Text style ={styles.title}>Fling</Text>
+                <Image
+                    style={{width: 50, height: 50}}
+                    source={require('../components/player/player-jumping.png')}
+                />
+
+                <View style={styles.button}>
+                    <Button  onPress={this.props.onPlayGame} title="Play Game">Play</Button>
+                </View>
 
                 <Switch
                     style={{marginTop:30}}
@@ -62,5 +72,13 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         alignItems: "center",
         justifyContent: "center"
+    },
+    title: {
+        color: 'black',
+        fontWeight: 'bold',
+        fontSize: 70,
+    },
+    button: {
+        margin: 20
     }
 });

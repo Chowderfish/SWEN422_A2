@@ -68,14 +68,14 @@ export default restart => {
             world,
             { x: width, y: bottom},
             4.7124,
-            platformWidth * 10,
+            platformWidth * 100,
             platformHeight,
         ),
         wallRight: Platform( //Left wall. This also needs bouncy mechanic
             world,
             { x: 0, y: bottom},
             1.5708,
-            platformWidth * 10,
+            platformWidth * 100,
             platformHeight,
         ),
 
