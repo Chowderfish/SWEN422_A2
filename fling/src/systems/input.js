@@ -6,9 +6,9 @@ const inputModes = ["fling", "slingshot"];
 let inputMode = "slingshot";
 
 export const changeInput = (mode) => {
-  console.log(mode);
+  //console.log(mode);
   inputMode = mode;
-}
+};
 
 let swipeStarted;
 let swipeEnded;

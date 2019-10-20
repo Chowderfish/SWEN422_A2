@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import {changeInput} from '../systems/input';
+import {changeGyro} from "../systems/gyroscope";
 import {
     ScrollView,
     Button,
@@ -12,11 +13,16 @@ const modes = ['slingshot', 'fling'];
 
 export default class MainMenu extends PureComponent {
 
-    state = {controlValue: false};
+    state = {controlValue: false, gyro: true};
 
-    toggleSwitch = (value) => {
+    toggleCSwitch = (value) => {
         this.setState({controlValue: value})
         changeInput(modes[value * 1]);
+    };
+
+    toggleGSwitch = (value) => {
+        this.setState({gyro: value})
+        changeGyro(value);
     };
 
     render() {
@@ -30,10 +36,17 @@ export default class MainMenu extends PureComponent {
 
                 <Switch
                     style={{marginTop:30}}
-                    onValueChange = {this.toggleSwitch}
+                    onValueChange = {this.toggleCSwitch}
                     value = {this.state.controlValue}
                 />
                 <Text>Control Mode: {this.state.controlValue ? 'Fling' : 'Slingshot'}</Text>
+
+                <Switch
+                    style={{marginTop:30}}
+                    onValueChange = {this.toggleGSwitch}
+                    value = {this.state.gyro}
+                />
+                <Text>Control Mode: {this.state.gyro ? 'Gyro ON' : 'Gyro OFF'}</Text>
 
             </ScrollView>
         );

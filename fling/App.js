@@ -8,13 +8,21 @@ export default class Fling extends PureComponent {
     super(props);
     this.state = {
       gameVisible: false,
-        controls: false
+        controls: false,
+        gyro: false
+
     };
   }
 
     changeCon = controls => {
         this.setState({
             controls
+        });
+    };
+
+    changeGyro = gyro => {
+        this.setState({
+            gyro
         });
     };
 
@@ -28,7 +36,7 @@ export default class Fling extends PureComponent {
     return (
         <View style={styles.container}>
           <StatusBar barStyle={"light-content"} hidden={this.state.gameVisible} animated showHideTransition={"slide"} />
-          <MainMenu onPlayGame={_ => this.toggleGame(true)} changeCon={this.changeCon}/>
+          <MainMenu onPlayGame={_ => this.toggleGame(true)} changeCon={this.changeCon} changeGyro={this.changeGyro}/>
           <Game
               visible={this.state.gameVisible}
               onClose={_ => this.toggleGame(false)}
