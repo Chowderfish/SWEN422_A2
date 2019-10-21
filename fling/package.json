@@ -19,6 +19,7 @@
     "react-native-game-engine": "^0.12.3",
     "react-native-svg": "^9.11.1",
     "react-native-switch": "^1.5.0",
+    "react-native-table-component": "^1.2.1",
     "react-native-web": "^0.11.4"
   },
   "devDependencies": {

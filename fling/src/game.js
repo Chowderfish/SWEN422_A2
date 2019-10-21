@@ -95,7 +95,7 @@ export default class Game extends PureComponent {
                     onEvent={this.handleEvent}
                 >
                     {this.state.gameOver && (
-                        <GameOver scoreBoard={this.state.scoreBoard} updateScoreBoard={this._updateHighScore} onPlayAgain={this.restart} onQuit={this.quit} />
+                        <GameOver score={this.state.score} scoreBoard={this.state.scoreBoard} updateScoreBoard={this._updateHighScore} onPlayAgain={this.restart} onQuit={this.quit} />
                     )}
                 </GameEngine>
 
@@ -104,7 +104,8 @@ export default class Game extends PureComponent {
         );
     }
 
-    _updateHighScore = async (scoreBoard) => {
+    _updateHighScore = (scoreBoard) => {
+      console.log(scoreBoard);
       this.setState({scoreBoard});
       AsyncStorage.setItem('score', JSON.stringify(scoreBoard));
     }
