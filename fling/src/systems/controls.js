@@ -11,7 +11,16 @@ import {
     standing
 } from "../utils/platforms";
 
+let jump = false;
+
+export const changeJump = (mode) => {
+    jump = mode;
+};
+
 export default (entities, { events }) => {
+
+    let jump_vector = 50;
+
     let player = entities.player;
     let platforms = filter(entities, "platform");
 
@@ -27,47 +36,93 @@ export default (entities, { events }) => {
         swipe,
         gyro
     };
+    let modes = []
 
-    let modes = [
-                {
-            if: grounded && swipe,
-            then: () => {
-                player.controls.mode = "platform";
-                if (swipe.vector.y < 0) {
-                    if (swipe.vector.x > 0) {
-                        player.direction.horizontal = "right";
-                    } else if (swipe.vector.x < 0) {
-                        player.direction.horizontal = "left";
+    if(jump){
+        modes = [
+            {
+                if: grounded && gyro,
+                then: () => {
+                    let {vector} = gyro;
+                    if (vector.x === undefined || vector.y === undefined);
+                    else {
+                        if (vector.x > 0) {
+                            player.direction.horizontal = "right";
+                        } else if (vector.x < 0) {
+                            player.direction.horizontal = "left";
+                        }
+                        player.body.force.y = -jump_vector;
+                        player.controls.gestures = {};
+                        player.controls.mode = "falling";
                     }
-                    player.direction.vertical = "up";
-                    player.body.force = swipe.vector;
                 }
-                player.controls.gestures = {};
+            },
+            {
+                if: falling && gyro,
+                then: () => {
+                    let {vector} = gyro;
+                    if (vector.x === undefined || vector.y === undefined);
+                    else {
+                        player.controls.mode = "falling";
+                        if (vector.x > 0) {
+                            player.direction.horizontal = "right";
+                        } else if (vector.x < 0) {
+                            player.direction.horizontal = "left";
+                        }
+                        vector.x = -vector.x; //Inverts it
+                        player.body.force.x = vector.x;
+                        player.controls.gestures = {};
+                    }
+                }
+            },
+            {
+                if: true,
+                then: () => { }
             }
-        },
-        {
-            if: falling && gyro,
-            then: () => {
-                let {vector} = gyro;
-                if (vector.x === undefined || vector.y === undefined);
-                else {
-                  player.controls.mode = "falling";
-                  if (vector.x > 0) {
-                      player.direction.horizontal = "right";
-                  } else if (vector.x < 0) {
-                      player.direction.horizontal = "left";
+        ];
+    }
+    else{
+        modes = [
+                    {
+                if: grounded && swipe,
+                then: () => {
+                    player.controls.mode = "platform";
+                    if (swipe.vector.y < 0) {
+                        if (swipe.vector.x > 0) {
+                            player.direction.horizontal = "right";
+                        } else if (swipe.vector.x < 0) {
+                            player.direction.horizontal = "left";
+                        }
+                        player.direction.vertical = "up";
+                        player.body.force = swipe.vector;
+                    }
+                    player.controls.gestures = {};
+                }
+            },
+            {
+                if: falling && gyro,
+                then: () => {
+                    let {vector} = gyro;
+                    if (vector.x === undefined || vector.y === undefined);
+                    else {
+                      player.controls.mode = "falling";
+                      if (vector.x > 0) {
+                          player.direction.horizontal = "right";
+                      } else if (vector.x < 0) {
+                          player.direction.horizontal = "left";
+                      }
+                      vector.x = -vector.x; //Inverts it
+                      player.body.force = vector;
+                      player.controls.gestures = {};
                   }
-                  vector.x = -vector.x; //Inverts it
-                  player.body.force = vector;
-                  player.controls.gestures = {};
-              }
+                }
+            },
+            {
+                if: true,
+                then: () => { }
             }
-        },
-        {
-            if: true,
-            then: () => { }
-        }
-    ];
+        ];
+    }
 
     modes.find(x => x.if).then();
 
