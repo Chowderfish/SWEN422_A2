@@ -9,5 +9,7 @@ Project is being developed in React Native and using the Expo CLI.
 4. Use `expo start` in the 'fling' directory to start the app.
 5. View the app using the [Android / iOS Expo app](https://expo.io/tools) by scanning the QR code from the CLI.
 
+**Note: we have had some issues and unexpected variability between devices - the best experience is seen on iOS devices if possible**
+
 ## React Native Game Engine
 https://github.com/bberak/react-native-game-engine
