@@ -41,6 +41,8 @@ export default class GameOver extends PureComponent {
 
                 <Button onPress={this.props.onPlayAgain} title="Play Again?">Play Again</Button>
 
+                <Button title="Main Menu">Main Menu</Button>
+
                   <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
                     <Row key={-1} data={['USERNAME', 'SCORE']} widthArr={[cellWidth, cellWidth]}
                         />
